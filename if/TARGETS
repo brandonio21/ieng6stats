@@ -1,6 +1,0 @@
-thrift_library (
-  name = 'ieng6service',
-  srcs = [
-    'service.thrift',
-  ],
-)

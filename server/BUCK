@@ -1,0 +1,12 @@
+python_library (
+  name="ieng6server",
+  srcs=[
+    "ieng6server.py",
+  ],
+  deps=[
+    "//if:ieng6service",
+  ],
+  visibility = [
+    'PUBLIC',
+  ]
+)
