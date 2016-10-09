@@ -6,3 +6,9 @@ python_binary (
     "//server:ieng6server",
   ],
 )
+
+export_file(
+  name="client",
+  src="index.html",
+  out="client/index.html",
+)

@@ -9,3 +9,10 @@ thrift_library (
     'PUBLIC',
   ]
 )
+
+export_file(
+  name='service.thrift',
+  visibility = [
+    'PUBLIC',
+  ]
+)
