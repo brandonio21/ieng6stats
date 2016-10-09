@@ -1,7 +1,7 @@
 python_library (
-  name="ieng6server",
+  name="ieng6-handler",
   srcs=[
-    "ieng6server.py",
+    "handler.py",
   ],
   deps=[
     "//if:ieng6service",

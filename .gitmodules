@@ -1,3 +1,6 @@
 [submodule "servertrak"]
 	path = servertrak
 	url = https://github.com/brandonio21/servertrak
+[submodule "server/servertrak"]
+	path = server/servertrak
+	url = https://github.com/brandonio21/servertrak
