@@ -6,6 +6,7 @@ python_binary (
     ":ieng6daemon",
     "//server/3rdparty:thrift",
     "//service:ieng6service",
+    "//server/proxies:dbproxy-lib",
   ],
 )
 

@@ -1,8 +1,10 @@
-from .servertrak import servertrak
-from .servertrak.common.server import Server
-from .servertrak.common.output import JSONOutput
-from .servertrak.common.user import User
-from .servertrak.proxies.ssh import SSHProxy
+import servertrak
+from servertrak import Server
+from servertrak import JSONOutput
+from servertrak import User
+from servertrak import SSHProxy
+
+import json
 import time
 from datetime import datetime
 
@@ -25,6 +27,7 @@ class ServerStatDaemon(object):
         while True:
             result_dict = servertrak.execute_command(proxy, servers, users, 
                                                      command, False, output_builder)
+            result_dict = json.loads(result_dict)
             results = {}
             for result in result_dict:
                 success = int(result['success'])
@@ -33,12 +36,12 @@ class ServerStatDaemon(object):
                     cpu_load = 0
                 else:
                     uptime_str = result['output']
-                    uptime, users, load = uptime_str.split(',')
+                    uptime, _, users, load, _, _ = uptime_str.split(',')
                     users = users.lstrip().split(' ')[0]
                     cpu_load = load.lstrip().split(':')[1].lstrip()
 
-                self.dbproxy.add_stat(result['hostname'], {
-                    'host': result['hostname'],
+                self.dbproxy.add_stat(result['server'], {
+                    'host': result['server'],
                     'date': datetime.now().isoformat(),
                     'users': users,
                     'cpu_load': cpu_load

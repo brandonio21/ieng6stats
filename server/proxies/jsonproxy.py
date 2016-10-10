@@ -33,5 +33,8 @@ class JSONDatabaseProxy(object):
         return all_stats[-1]
 
     def add_stat(self, hostname, stat_dict):
+        if hostname not in self.database:
+            self.database[hostname] = []
+
         self.database[hostname].append(stat_dict)
         self._save_db()
