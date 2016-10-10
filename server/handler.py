@@ -1,4 +1,4 @@
-from .ieng6service.types import Server, ServerStat
+from service.ttypes import ServerStat, Server
 
 class ServerStatServiceHandler(object):
     def __init__(self, dbproxy):
@@ -7,6 +7,9 @@ class ServerStatServiceHandler(object):
     def getLatestStat(self, server):
         stat_dict = self.dbproxy.get_latest_stat(server.hostname)
         return self._dict_to_stat(stat_dict)
+
+    def ping(self):
+        return 'pong'
 
     def _dict_to_stat(self, stat_dict):
         stat = ServerStat()

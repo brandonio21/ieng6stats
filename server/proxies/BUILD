@@ -1,6 +1,6 @@
 python_library (
   name = "dbproxy-lib",
-  srcs = [
-    "json.py",
+  sources = [
+    "jsonproxy.py",
   ],
 )

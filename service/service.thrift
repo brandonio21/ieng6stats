@@ -16,4 +16,5 @@ struct ServerStatCollection {
 
 service ServerStatService {
   ServerStat getLatestStat(1: Server host);
+  string ping();
 }
