@@ -1,20 +1,25 @@
-import servertrak
-from servertrak import Server
-from servertrak import JSONOutput
-from servertrak import User
-from servertrak import SSHProxy
+from servertrak.servertraker import ServerTraker
+from servertrak.common.server import Server
+from servertrak.common.user import User
+from servertrak.proxies.ssh import SSHProxy
+from servertrak.format.jsonoutput import JSONOutput
 
 import json
 import time
 from datetime import datetime
 
 class ServerStatDaemon(object):
-    def __init__(self, dbproxy):
+    def __init__(self, 
+                 dbproxy, 
+                 host_discovery_modules, 
+                 output_builder, 
+                 servertrak_proxy):
+        self.servertraker = ServerTraker(
+            host_discovery_modules, output_builder, servertrak_proxy
+        )
         self.dbproxy = dbproxy
 
-
     def loop(self):
-
         discoverable_hostname_pattern = 'ieng6(-2[0-9][0-9])?\.ucsd\.edu'
         hostnames = set(servertrak.generate_servers_from_regex(discoverable_hostname_pattern))
 

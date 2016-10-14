@@ -6,7 +6,7 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
-from jsonproxy import JSONDatabaseProxy
+from proxies.jsonproxy import JSONDatabaseProxy
 from daemon import ServerStatDaemon
 
 import threading
